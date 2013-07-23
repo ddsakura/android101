@@ -5,9 +5,10 @@ Android 101
 ----------
 This is practice for android
 
-the topic:
+# the topic including:
 
-activity
-lifecycle
-intent
-extra
+* activity
+* lifecycle
+* intent
+* extra
+* fragment
