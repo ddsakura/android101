@@ -1,18 +1,16 @@
 package com.example.androidpractice1;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
-import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 	
 	private static final String TAG = "AndroidPractice1-Main";
-	private Button mTrueButton;
-    private Button mFalseButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +19,17 @@ public class MainActivity extends Activity {
         
         Log.d(TAG, "onCreate(Bundle) called");
         
-        mTrueButton = (Button)findViewById(R.id.true_button);
+        FragmentManager fm = getSupportFragmentManager();
+        Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
+
+        if (fragment == null) {
+            fragment = new MainFragment();
+            fm.beginTransaction()
+                .add(R.id.fragmentContainer, fragment)
+                .commit();
+        }
+        
+        /*mTrueButton = (Button)findViewById(R.id.true_button);
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,7 +48,7 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				
 			}
-		});
+		});*/
     }
 
 
@@ -101,12 +109,4 @@ public class MainActivity extends Activity {
 		Log.d(TAG, "onStop called");
 	}
 
-
-	@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-    
 }
