@@ -1,12 +1,14 @@
 package com.example.androidpractice1;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 
 
-public class SecondActivity extends Activity {
+public class SecondActivity extends FragmentActivity {
 
 	private static final String TAG = "AndroidPractice1-Second";
 	
@@ -16,6 +18,17 @@ public class SecondActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_second);
 		Log.d(TAG, "onCreate called");
+		
+		
+        FragmentManager fm = getSupportFragmentManager();
+        Fragment fragment = fm.findFragmentById(R.id.fragmentSecondContainer);
+
+        if (fragment == null) {
+            fragment = new SecondFragment();
+            fm.beginTransaction()
+                .add(R.id.fragmentSecondContainer, fragment)
+                .commit();
+        }
 		
 		Bundle passValue = getIntent().getExtras();
 		String newString= passValue.getString("PassValue2");

@@ -29,11 +29,11 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Does nothing yet, but soon!
-            	Intent i = new Intent(getActivity(), SecondActivity.class);
+            	Intent i = new Intent(getActivity(), ViewPagerActivity.class);
             	i.putExtra("PassValue", "ABC");
             	i.putExtra("PassValue2", "DEF");
-                //startActivity(i);
-            	startActivityForResult(i, 0);
+                startActivity(i);
+            	//startActivityForResult(i, 0);
             }
         });
         mFalseButton = (Button)v.findViewById(R.id.false_button);
