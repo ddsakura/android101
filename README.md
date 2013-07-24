@@ -12,3 +12,4 @@ This is practice for android
 * intent
 * extra
 * fragment
+* viewPager
