@@ -6,8 +6,10 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
 public class ViewPagerActivity extends FragmentActivity {
+	private static final String TAG = "AndroidPractice1-ViewPager";
 	private ViewPager mViewPager;
 
     @Override
@@ -21,12 +23,24 @@ public class ViewPagerActivity extends FragmentActivity {
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fm) {
             @Override
             public int getCount() {
-                return 1;
+            	//Need to put actual size
+                return 10;
             }
 
             @Override
             public Fragment getItem(int pos) {
+            	Log.d(TAG, "Fragment getItem!");
                 return new SecondFragment();
+            }
+        });
+        
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            public void onPageScrollStateChanged(int state) { }
+
+            public void onPageScrolled(int pos, float posOffset, int posOffsetPixels) { }
+
+            public void onPageSelected(int pos) {
+            	setTitle("Pager " + pos);
             }
         });
     }

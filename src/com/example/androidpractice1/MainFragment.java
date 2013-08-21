@@ -29,7 +29,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Does nothing yet, but soon!
-            	Intent i = new Intent(getActivity(), ViewPagerActivity.class);
+            	Intent i = new Intent(getActivity(), SecondActivity.class);
             	i.putExtra("PassValue", "ABC");
             	i.putExtra("PassValue2", "DEF");
                 startActivity(i);
@@ -40,7 +40,11 @@ public class MainFragment extends Fragment {
         mFalseButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+            	Intent i = new Intent(getActivity(), ViewPagerActivity.class);
+            	i.putExtra("PassValue", "Pager1");
+            	i.putExtra("PassValue2", "DEF");
+                startActivity(i);
+            	//startActivityForResult(i, 0);
 				
 			}
 		});
