@@ -9,6 +9,10 @@ import android.widget.TextView;
 
 public class SecondFragment extends Fragment {
 	private String pTitle;
+	
+	/*public SecondFragment(String title) {
+		pTitle = title;
+	}*/
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
