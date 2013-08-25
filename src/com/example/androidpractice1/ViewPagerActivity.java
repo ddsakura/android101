@@ -30,8 +30,13 @@ public class ViewPagerActivity extends FragmentActivity {
             @Override
             public Fragment getItem(int pos) {
             	Log.d(TAG, "Fragment getItem!");
-                return new SecondFragment();
+            	Bundle args = new Bundle();
+            	args.putString("POS", String.valueOf(pos));
+            	SecondFragment fragment = new SecondFragment(); 
+            	fragment.setArguments(args);            	
+                return fragment;
             }
+            
         });
         
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {

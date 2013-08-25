@@ -31,7 +31,7 @@ public abstract class SingleFragmentActivity extends FragmentActivity {
 		
 		Bundle passValue = getIntent().getExtras();
 		String newString= passValue.getString("PassValue2");
-		Log.d(TAG, "passValue is " + newString);
+		Log.d(TAG, "passValue2 is " + newString);
 		
 		Intent data = new Intent();
         data.putExtra("backValue", 1234);
