@@ -4,8 +4,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.View;
@@ -27,6 +30,17 @@ public class DatePickerFragment extends DialogFragment {
 
         return fragment;
     }
+	
+	private void sendResult(int resultCode) {
+	    if (getTargetFragment() == null)
+	        return;
+
+	    Intent i = new Intent();
+	    i.putExtra(EXTRA_DATE, mDate);
+
+	    getTargetFragment()
+	        .onActivityResult(getTargetRequestCode(), resultCode, i);
+	}
 
 
 
@@ -59,7 +73,13 @@ public class DatePickerFragment extends DialogFragment {
 		return new AlertDialog.Builder(getActivity())
 			.setView(v)
 			.setTitle(R.string.date_picker)
-			.setPositiveButton(android.R.string.ok, null)
+			.setPositiveButton(
+            android.R.string.ok,
+            new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    sendResult(Activity.RESULT_OK);
+                }
+            })
 			.create();
 	}
 

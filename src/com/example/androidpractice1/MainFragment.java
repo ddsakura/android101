@@ -2,6 +2,7 @@ package com.example.androidpractice1;
 
 import java.util.Date;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,18 @@ public class MainFragment extends Fragment {
 	private Button mTrueButton;
     private Button mFalseButton;
     private Button mDatePicker;
+    private static final int REQUEST_DATE = 0;
+    
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != Activity.RESULT_OK) return;
+        if (requestCode == REQUEST_DATE) {
+            Date date = (Date)data
+                .getSerializableExtra(DatePickerFragment.EXTRA_DATE);
+            
+            mDatePicker.setText(date.toString());
+        }
+    }
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -59,6 +72,7 @@ public class MainFragment extends Fragment {
             	FragmentManager fm = getActivity().getSupportFragmentManager();
             	DatePickerFragment dialog = DatePickerFragment
                         .newInstance(new Date());
+            	dialog.setTargetFragment(MainFragment.this, REQUEST_DATE);
             	dialog.show(fm, "DIALOG");
             }
         });
