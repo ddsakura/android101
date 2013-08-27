@@ -1,8 +1,11 @@
 package com.example.androidpractice1;
 
+import java.util.Date;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,7 @@ public class MainFragment extends Fragment {
 	
 	private Button mTrueButton;
     private Button mFalseButton;
+    private Button mDatePicker;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,16 @@ public class MainFragment extends Fragment {
 				
 			}
 		});
+        mDatePicker = (Button)v.findViewById(R.id.date_button);
+        mDatePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            	FragmentManager fm = getActivity().getSupportFragmentManager();
+            	DatePickerFragment dialog = DatePickerFragment
+                        .newInstance(new Date());
+            	dialog.show(fm, "DIALOG");
+            }
+        });
 		
         return v;
 	}
