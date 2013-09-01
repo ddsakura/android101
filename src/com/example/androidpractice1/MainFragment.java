@@ -2,8 +2,11 @@ package com.example.androidpractice1;
 
 import java.util.Date;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class MainFragment extends Fragment {
 	
 	private Button mTrueButton;
@@ -45,6 +49,7 @@ public class MainFragment extends Fragment {
 	    inflater.inflate(R.menu.main, menu);
 	}
 	
+	@SuppressLint("NewApi")
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
@@ -54,6 +59,15 @@ public class MainFragment extends Fragment {
             	i.putExtra("PassValue2", "DEF");
                 startActivity(i);
 	            return true;
+	        case R.id.menu_item_show_subtitle:
+                if (getActivity().getActionBar().getSubtitle() == null) {
+                    getActivity().getActionBar().setSubtitle(R.string.subtitle);
+                    item.setTitle(R.string.hide_subtitle);
+                } else {
+                    getActivity().getActionBar().setSubtitle(null);
+                    item.setTitle(R.string.show_subtitle);
+                }
+                return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
