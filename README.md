@@ -13,3 +13,4 @@ This is practice for android
 * extra
 * fragment
 * viewPager
+* menu

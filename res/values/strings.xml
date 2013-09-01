@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-  <string name="app_name">AndroidPractice1</string>
+  <string name="app_name">Android Practice</string>
   <string name="question_text">This is Android Practice.</string>
   <string name="true_button">Second Activity</string>
   <string name="false_button">View Pager</string>
   <string name="date_picker">Date Picker</string>
   <string name="menu_settings">Settings</string>
   <string name="second_activity">Second Activty</string>
+  <string name="new_note">New</string>
+  <string name="show_subtitle">Show Subtitle</string>
+  <string name="hide_subtitle">Hide Subtitle</string>
+  <string name="subtitle">If you see something, say something.</string>
+  <string name="delete_note">Delete</string>
 
 </resources>
