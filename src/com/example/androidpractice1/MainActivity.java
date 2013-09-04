@@ -20,7 +20,7 @@ public class MainActivity extends FragmentActivity {
 	
 	private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
-    final String[] data ={"one","two","three"};
+    private String[] mDrawerTitles;
 
 
 
@@ -33,12 +33,14 @@ public class MainActivity extends FragmentActivity {
         
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        mDrawerTitles = getResources().getStringArray(R.array.sidebar_menu);
         
-       // ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActionBar().getThemedContext(), android.R.layout.simple_list_item_1, data);
+        
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.drawer_list_item, mDrawerTitles);
         
 
         // Set the adapter for the list view
-        //mDrawerList.setAdapter(adapter);
+        mDrawerList.setAdapter(adapter);
         // Set the list's click listener
 
         
