@@ -5,12 +5,10 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -42,7 +40,7 @@ public class MainActivity extends FragmentActivity {
         // Set the adapter for the list view
         mDrawerList.setAdapter(adapter);
         // Set the list's click listener
-
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
         
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
@@ -134,4 +132,26 @@ public class MainActivity extends FragmentActivity {
 		Log.d(TAG, "onStop called");
 	}
 
+	/* The click listner for ListView in the navigation drawer */
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            selectItem(position);
+        }
+    }
+
+	/** Swaps fragments in the main content view */
+	private void selectItem(int position) {
+
+    	Fragment fragment = new MainFragment(); 
+
+    	FragmentManager fragmentManager = getSupportFragmentManager();
+    	fragmentManager.beginTransaction().replace(R.id.fragmentContainer, fragment).commit();
+
+	    // Highlight the selected item, update the title, and close the drawer
+	    mDrawerList.setItemChecked(position, true);
+	    setTitle(mDrawerTitles[position]);
+	    mDrawerLayout.closeDrawer(mDrawerList);
+	}
+	
 }

@@ -1,5 +1,6 @@
 package com.example.androidpractice1;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,20 +13,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+@SuppressLint("ValidFragment")
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class SecondFragment extends Fragment {
 	private static final String TAG_TITLE = "AndroidPractice1-SF-Title";
 	private String pTitle;
 	
-	/*public SecondFragment(String title) {
-		pTitle = title;
-	}*/
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		Log.d(TAG_TITLE, (String)getActivity().getIntent().getSerializableExtra("PassValue"));
+		//Log.d(TAG_TITLE, (String)getActivity().getIntent().getSerializableExtra("PassValue"));
 		
 		if ((boolean)getActivity().getIntent().getSerializableExtra("PassValue").equals("ABC")) {
 			Log.d(TAG_TITLE, "OK");

@@ -13,6 +13,7 @@
   <string name="hide_subtitle">Hide Subtitle</string>
   <string name="subtitle">If you see something, say something.</string>
   <string name="delete_note">Delete</string>
+  <string name="listview">listview</string>
   <string-array name="sidebar_menu">
         <item>Mercury</item>
         <item>Venus</item>
