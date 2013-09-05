@@ -1,15 +1,18 @@
 package com.example.androidpractice1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 
 
-public class SecondActivity extends SingleFragmentActivity {
+public class SecondActivity extends FragmentActivity {
 
 	private static final String TAG = "AndroidPractice1-Second";
 	
-	/*@Override
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
@@ -37,12 +40,12 @@ public class SecondActivity extends SingleFragmentActivity {
         
         Log.d(TAG, "backValue ok");
 		
-	}*/
+	}
 	
-    @Override
+    /*@Override
     protected Fragment createFragment() {
         return new SecondFragment();
-    }
+    }*/
 	
     @Override
 	protected void onDestroy() {

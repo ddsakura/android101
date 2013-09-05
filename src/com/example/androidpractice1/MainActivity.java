@@ -142,8 +142,14 @@ public class MainActivity extends FragmentActivity {
 
 	/** Swaps fragments in the main content view */
 	private void selectItem(int position) {
-
-    	Fragment fragment = new ListViewFrag(); 
+		Fragment fragment;
+		if (position == 0) {
+			fragment = new ListViewFrag(); 
+			
+		} else {
+			fragment = new PhotoGalleryFragment(); 
+		}
+    	
 
     	FragmentManager fragmentManager = getSupportFragmentManager();
     	fragmentManager.beginTransaction().replace(R.id.fragmentContainer, fragment).commit();

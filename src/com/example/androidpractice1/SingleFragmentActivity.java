@@ -1,6 +1,5 @@
 package com.example.androidpractice1;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -20,24 +19,15 @@ public abstract class SingleFragmentActivity extends FragmentActivity {
 		
 		
         FragmentManager fm = getSupportFragmentManager();
-        Fragment fragment = fm.findFragmentById(R.id.fragmentSecondContainer);
+        Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
 
         if (fragment == null) {
             fragment = new SecondFragment();
             fm.beginTransaction()
-                .add(R.id.fragmentSecondContainer, fragment)
+                .add(R.id.fragmentContainer, fragment)
                 .commit();
         }
 		
-		Bundle passValue = getIntent().getExtras();
-		String newString= passValue.getString("PassValue2");
-		Log.d(TAG, "passValue2 is " + newString);
-		
-		Intent data = new Intent();
-        data.putExtra("backValue", 1234);
-        setResult(RESULT_OK, data);
-        
-        Log.d(TAG, "backValue ok");
 	}
 
 }
