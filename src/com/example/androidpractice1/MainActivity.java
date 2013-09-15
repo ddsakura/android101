@@ -1,5 +1,7 @@
 package com.example.androidpractice1;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,6 +21,8 @@ public class MainActivity extends FragmentActivity {
 	private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private String[] mDrawerTitles;
+    
+    public  int memoryClass;
 
 
 
@@ -26,6 +30,10 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        ActivityManager am = (ActivityManager)getSystemService(
+                Context.ACTIVITY_SERVICE);
+        memoryClass = am.getMemoryClass() * 1024 * 1024;
         
         Log.d(TAG, "onCreate(Bundle) called");
         
@@ -147,7 +155,7 @@ public class MainActivity extends FragmentActivity {
 			fragment = new ListViewFrag(); 
 			
 		} else {
-			fragment = new PhotoGalleryFragment(); 
+			fragment = new PhotoGalleryFragment(memoryClass); 
 		}
     	
 
